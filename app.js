@@ -29,8 +29,8 @@ app.get('/api/restaurants', function(req, res) {
 
 // get a restaurants with ID of 1
 app.get('/api/restaurants/:restaurant_id', function(req, res) {
-	var id = req.params.name;
-	Restaurant.findById(restaurant_id, function(err, restaurant) {
+	var id = req.params.restaurant_id;
+	Restaurant.findById(id, function(err, restaurant) {
 		if (err)
 			res.status(400).json({err})
             //res.send(err)
