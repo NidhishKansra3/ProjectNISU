@@ -1,0 +1,19 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+
+  header {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 20px;
+  }
+
+  footer {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .Zero { background: #FF0000; }
+  .Zero1 { background: orange }

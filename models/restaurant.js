@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ResSchema = new Schema({
-    adress : {building : String,
+    address : {building : String,
               coord: {'0': Object,
                     '1':Object
             },

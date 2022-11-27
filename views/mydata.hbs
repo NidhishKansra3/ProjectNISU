@@ -1,0 +1,25 @@
+
+<table border="1">  <!--  tr,th put it for header of table-->
+    <tr>
+    <th>Address</th>
+    <th>Borough</th>
+    <th>Cuisine</th>
+    <th>Grades</th>
+    <th>Name</th>
+    <th>Restaurant_ID</th>
+
+  </tr>
+    {{#each data}} 
+  <tr>
+    <td>{{address}}</td> 
+    <td>{{borough}}</td>
+    <td>{{cuisine}}</td>
+    <td>{{grades}}</td>
+    <td>{{name}}</td>
+    <td>{{restaurant_id}}</td>
+    </tr>
+    {{/each}}
+    
+</table>
+
+
