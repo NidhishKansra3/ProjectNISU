@@ -14,34 +14,7 @@ mongoose.connect(database.url);
 
 var Restaurant = require('./models/restaurant');
  
- 
-//get all restaurant data from db
-app.get('/api/restaurants', function(req, res) {
-	// use mongoose to get all todos in the database
-	Restaurant.find(function(err, restaurants) {
-		// if there is an error retrieving, send the error otherwise send data
-		if (err)
-			res.send(err)
-		res.json(restaurants); // return all restaurant in JSON format
-	});
-});
-
-
-// get a restaurants with ID of 1
-app.get('/api/restaurants/:restaurant_id', function(req, res) {
-	var id = req.params.restaurant_id;
-	Restaurant.findById(id, function(err, restaurant) {
-		if (err)
-			res.status(400).json({err})
-            //res.send(err)
-            console.log(err);
-		res.json(restaurant);
-	});
- 
-});
-
-
-// create restaurant and send back all restaurants after creation
+ // Step2-1 create restaurant and send back all restaurants after creation
 app.post('/api/restaurants', function(req, res) {
 
     // create mongose method to create a new record into collection
@@ -65,6 +38,40 @@ app.post('/api/restaurants', function(req, res) {
 	});
  
 });
+
+// step2-2, step 2-3
+app.get('/api/restaurants', function(req, res) {
+
+    const page = req.query.page;
+    const perPage  = req.query.perPage;
+    const borough = req.query.borough;
+  
+    Restaurant.find({borough:borough}, function(err, restaurant) {
+          if (err)
+              res.status(400).json({err})
+              //res.send(err)
+              console.log(err);
+          res.json(restaurant);
+      }).limit(perPage);
+      
+  });
+
+
+// step2-4 get a restaurants with ID of 1
+app.get('/api/restaurants/:restaurant_id', function(req, res) {
+    
+	var id = req.params.restaurant_id;
+	Restaurant.findById(id, function(err, restaurant) {
+		if (err)
+			res.status(202).json({err})
+            //res.send(err)
+            console.log(err);
+		res.json(restaurant);
+	});
+ 
+});
+
+
 
 app.listen(port);
 console.log("App listening on port : " + port);
