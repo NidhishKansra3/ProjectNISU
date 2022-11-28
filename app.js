@@ -110,7 +110,40 @@ app.get('/api/restaurants/:restaurant_id', function(req, res) {
  
 });
 
-
+//Update record
+app.put("/api/restaurants/:restaurant_id", function (req, res) {
+    // create mongose method to update an existing record into collection
+    console.log(req.body);
+  
+    let id = req.params.restaurant_id;
+    /*var data = {
+      title: req.body.title,
+      pageCount: req.body.pageCount,
+    };*/
+  
+    // save the user
+    Book.findByIdAndUpdate(id, data, function (err, book) {
+      if (err) throw err;
+  
+      res.send("Successfully! Restaurant updated - " + book.name);
+      
+    });
+  });
+  
+  //Delete a Restaurant by ID
+  app.delete("/api/restaurants/:restaurant_id", function (req, res) {
+    console.log(req.params.restaurant_id);
+    let id = req.params.restaurant_id;
+    restaurant.remove(
+      {
+        _id: id,
+      },
+      function (err) {
+        if (err) res.send(err);
+        else res.send("Successfully! Restaurant has been Deleted.");
+      }
+    );
+  });
 
 app.listen(port);
 console.log("App listening on port : " + port);
