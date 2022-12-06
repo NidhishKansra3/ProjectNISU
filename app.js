@@ -166,7 +166,7 @@ app.post("/api/restaurants", authorization, function (req, res) {
 });
 
 // step2-2, step 2-3
-app.get("/api/restaurants", authorization, function (req, res) {
+app.get("/api/restaurants", function (req, res) {
   const page = req.query.page;
   const perPage = req.query.perPage;
   const borough = req.query.borough;
